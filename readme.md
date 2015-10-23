@@ -3,7 +3,7 @@
 ## Install
 
 ```
-$ npm install --save sitemap
+$ npm install bcmh/read-sitemap --save
 ```
 
 ## Usage

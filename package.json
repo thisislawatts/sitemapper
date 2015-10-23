@@ -1,7 +1,7 @@
 {
   "name": "sitemap",
-  "version": "0.0.0",
-  "description": "Get",
+  "version": "0.0.1",
+  "description": "Parse the sitemap(s) for URLs",
   "license": "MIT",
   "repository": "bcmh/sitemap",
   "author": {
