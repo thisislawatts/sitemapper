@@ -1,0 +1,12 @@
+<urlset>
+	<url>
+		<loc>http://example.com</loc>
+		<lastmod>2015-10-16T17:04:29+00:00</lastmod>
+		<priority>0.8</priority>
+	</url>
+	<url>
+		<loc>http://example.com/work/</loc>
+		<lastmod>2015-10-06T16:42:59+00:00</lastmod>
+		<priority>0.6</priority>
+	</url>
+</urlset>

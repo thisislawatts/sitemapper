@@ -1,0 +1,40 @@
+{
+  "name": "sitemap",
+  "version": "0.0.0",
+  "description": "Get",
+  "license": "MIT",
+  "repository": "bcmh/sitemap",
+  "author": {
+    "name": "thisislawatts",
+    "email": "luke@bcmh.co.uk",
+    "url": "bcmh.build"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    ""
+  ],
+  "dependencies": {
+    "asyncblock": "^2.2.0",
+    "got": "^5.0.0",
+    "xml2js": "^0.4.13"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.5",
+    "sync-request": "^2.1.0",
+    "xo": "^0.9.0"
+  },
+  "xo": {
+    "envs": [
+      "node",
+      "mocha"
+    ]
+  }
+}
