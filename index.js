@@ -3,7 +3,7 @@
 const request = require('sync-request');
 const parseXml = require('xml2js').parseString;
 
-Sitemapper = (url, opts) => {
+const Sitemapper = (url, opts) => {
 
 	var _self = {};
 
@@ -24,7 +24,7 @@ Sitemapper = (url, opts) => {
 	_self.getUrlsFromUrlset = (urlset) => {
 		var arr = [];
 
-		urlset.url.forEach(function (item) {
+		urlset.url.forEach((item) => {
 			arr.push(item.loc.pop());
 		});
 
@@ -34,17 +34,22 @@ Sitemapper = (url, opts) => {
 	return {
 		fetchUrlsFromUrlset : _self.getUrlsFromUrlset,
 		fetch: (cb) => {
+
 			var res = request('GET', _self.url, _self.reqOptions );
 
 			parseXml(res.getBody(), (err,res) => {
 				var urls = [];
+
+				if (err) {
+					throw err;
+				}
 
 				if ( res.urlset ) {
 					urls = _self.getUrlsFromUrlset(res.urlset);
 				} else if (res.sitemapindex) {
 
 					var sitemaps = [];
-					res.sitemapindex.sitemap.forEach(function(item) {
+					res.sitemapindex.sitemap.forEach((item) => {
 						sitemaps.push(item.loc.pop());
 					});
 
@@ -52,6 +57,10 @@ Sitemapper = (url, opts) => {
 						var r = request('GET', url, _self.reqOptions );
 
 						parseXml(r.getBody(), (err, res) => {
+							if (!err) {
+								throw err;
+							}
+
 							urls = urls.concat(_self.getUrlsFromUrlset(res.urlset));
 						});
 					});
@@ -60,7 +69,7 @@ Sitemapper = (url, opts) => {
 				_self.urls = urls;
 
 				if (cb) {
-					cb();
+					return cb();
 				}
 			});
 		},
