@@ -9,7 +9,7 @@ $ npm install bcmh/read-sitemap --save
 ## Usage
 
 ```js
-var sitemap = require('sitemap');
+const sitemap = require('sitemap');
 
 sitemap('http://example.com/sitemap.xml');
 sitemap.fetch();
