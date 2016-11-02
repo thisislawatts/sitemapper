@@ -1,20 +1,17 @@
 'use strict';
 
+const request = require('sync-request');
+const parseXml = require('xml2js').parseString;
 
-var request = require('sync-request');
-var parseXml = require('xml2js').parseString;
-
-// Config
-
-var reqOptions = {
-	'headers' : {
-		'user-agent' : 'example-user-agent'
-	}
-};
-
-module.exports = function (url, opts) {
+Sitemapper = (url, opts) => {
 
 	var _self = {};
+
+	_self.reqOptions = {
+		'headers' : {
+			'user-agent' : 'github.com/bcmh/sitemapper'
+		}
+	};
 
 	if (typeof url !== 'string') {
 		throw new TypeError('url is required.');
@@ -24,7 +21,7 @@ module.exports = function (url, opts) {
 
 	opts = opts || {};
 
-	_self.getUrlsFromUrlset = function(urlset) {
+	_self.getUrlsFromUrlset = (urlset) => {
 		var arr = [];
 
 		urlset.url.forEach(function (item) {
@@ -35,11 +32,11 @@ module.exports = function (url, opts) {
 	};
 
 	return {
-		fetchUrlsFromUrlset: _self.getUrlsFromUrlset,
-		fetch: function(cb) {
-			var res = request('GET', _self.url, reqOptions );
+		fetchUrlsFromUrlset : _self.getUrlsFromUrlset,
+		fetch: (cb) => {
+			var res = request('GET', _self.url, _self.reqOptions );
 
-			parseXml(res.getBody(), function(err,res) {
+			parseXml(res.getBody(), (err,res) => {
 				var urls = [];
 
 				if ( res.urlset ) {
@@ -51,10 +48,10 @@ module.exports = function (url, opts) {
 						sitemaps.push(item.loc.pop());
 					});
 
-					sitemaps.forEach(function(url) {
-						var r = request('GET', url, reqOptions );
+					sitemaps.forEach(url => {
+						var r = request('GET', url, _self.reqOptions );
 
-						parseXml(r.getBody(), function(err, res) {
+						parseXml(r.getBody(), (err, res) => {
 							urls = urls.concat(_self.getUrlsFromUrlset(res.urlset));
 						});
 					});
@@ -67,8 +64,10 @@ module.exports = function (url, opts) {
 				}
 			});
 		},
-		fetchUrls : function() {
+		fetchUrls : () => {
 			return _self.urls;
 		}
 	};
-};
+}
+
+module.exports = Sitemapper;

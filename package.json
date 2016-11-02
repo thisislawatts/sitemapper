@@ -1,13 +1,13 @@
 {
-  "name": "sitemap",
-  "version": "0.0.1",
+  "name": "sitemapper",
+  "version": "0.1.0",
   "description": "Parse the sitemap(s) for URLs",
   "license": "MIT",
-  "repository": "bcmh/sitemap",
+  "repository": "https://github.com/bcmh/sitemapper",
   "author": {
     "name": "thisislawatts",
     "email": "luke@bcmh.co.uk",
-    "url": "bcmh.build"
+    "url": "http://bcmh.build"
   },
   "engines": {
     "node": ">=0.10.0"
@@ -15,11 +15,9 @@
   "scripts": {
     "test": "mocha"
   },
-  "files": [
-    "index.js"
-  ],
+  "files": ["index.js"],
   "keywords": [
-    ""
+    "sitemaps"
   ],
   "dependencies": {
     "sync-request": "^2.1.0",

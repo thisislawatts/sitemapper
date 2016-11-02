@@ -1,12 +1,17 @@
-# Sitemap
+Sitemapper
+===
 
-## Install
+[![Code Climate](https://codeclimate.com/github/bcmh/sitemapper/badges/gpa.svg)](https://codeclimate.com/github/bcmh/sitemapper)
+
+Install
+---
 
 ```
-$ npm install bcmh/read-sitemap --save
+npm install bcmh/read-sitemap --save
 ```
 
-## Usage
+Usage
+---
 
 ```js
 const sitemap = require('sitemap');
@@ -18,7 +23,8 @@ sitemap.fetchUrls();
 ```
 
 
-## API
+API
+---
 
 ### sitemap(url)
 
@@ -26,6 +32,7 @@ sitemap.fetchUrls();
 
 Type: `string`
 
-## License
+License
+---
 
 MIT © [thisislawatts](http://bcmh.build)
